@@ -1,0 +1,32 @@
+delivery_cost = float(input("How much is it to deliver?: $"))
+
+fuel_cost = float(input("How much do you usually pay for fuel?: $"))
+fuel_mileage = float(input("How many km does that fuel usually last for? "))
+
+distance_to_restaurant = float(input("How many km is it to drive to the restaurant, one-way?: "))
+
+parking_fee = float(input("What is the estimated parking fee that you'll have to pay?: $"))
+
+car_cost = float(input("How much did your car cost? $"))
+
+fuel_cost_per_km = fuel_cost / fuel_mileage
+# print(fuel_cost_per_km)
+
+car_depreciation_per_km = car_cost / 167000
+'''
+average car mileage per year in Singapore = 16700km
+car lifespan = 10 years (assume that you scrap car after COE expires, and car hence has $0 value)
+'''
+
+pickup_car_cost = car_depreciation_per_km * distance_to_restaurant
+# print(round(pickup_car_cost,2))
+pickup_fuel_cost = fuel_cost_per_km * distance_to_restaurant
+total_cost = parking_fee + pickup_fuel_cost + pickup_car_cost
+
+print("")
+print("The total cost to pickup food is: $", round(total_cost, 2))
+
+if delivery_cost > total_cost:
+    print("Worth it to pick up!")
+else:
+    print("Not worth it to pick up!")
